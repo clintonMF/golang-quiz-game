@@ -19,12 +19,12 @@ If you want to quit the quiz enter "q" also lowercase`
 	score := 0
 	number_of_questions := 4
 
-	fmt.Println("\nQuestion1 :which is better RTX 3080 or RTX 3090?")
-	fmt.Printf("(a)RTX 3080 (b)RTX 3090 (c) none (d) i don't care")
+	fmt.Println("\nWho is the first nigerian female to drive a car?")
+	fmt.Printf("(a)Ngozi Okonjo-Iweala (b)Patience Jonathan (c) Funmilayo Ransome-Kuti (d) i don't care\n")
 	var answer1 string
 	fmt.Scan(&answer1)
 
-	if answer1 == "a" {
+	if answer1 == "c" {
 		fmt.Println("Correct!")
 		score++
 	} else if answer1 == "q" {
@@ -35,7 +35,7 @@ If you want to quit the quiz enter "q" also lowercase`
 		fmt.Println("Incorrect")
 	}
 	fmt.Println("\nQuestion 2 : who is the current president of nigeria")
-	fmt.Printf("(a)M. buhari (b)Peter Obi (c) Goodluck Jonathan (d)You")
+	fmt.Printf("(a)M. buhari (b)Peter Obi (c) Goodluck Jonathan (d)You\n")
 	var answer2 string
 	fmt.Scan(&answer2)
 
@@ -84,6 +84,6 @@ If you want to quit the quiz enter "q" also lowercase`
 
 	fmt.Println("score: ", score, "number of questions:", number_of_questions)
 	percent := (float32(score) / float32(number_of_questions)) * 100
-	fmt.Printf("You answered %v%% of the jmquestions currectly", percent)
+	fmt.Printf("You answered %v%% of the questions correctly", percent)
 
 }
