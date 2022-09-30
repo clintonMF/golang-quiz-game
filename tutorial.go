@@ -2,6 +2,35 @@ package main
 
 import "fmt"
 
+func answer(user_answer, answer string, score, num_of_ques_answered *int) string {
+	options := [4]string{"a", "b", "c", "d"}
+	found := false
+	for _, v := range options {
+		if user_answer == v {
+			found = true
+		}
+	}
+
+	if found == false && user_answer != "q" {
+		// this handles the case in which the user puts an answer that isn't
+		// an option, i want to notify the user that they have done so.
+		// this will help if the user is unaware of the instructions
+		fmt.Println("You can only choose from options a to d in small letters")
+	}
+	if user_answer == answer {
+		fmt.Println("Correct!")
+		*score++
+		return "continue"
+	} else if user_answer == "q" {
+		fmt.Println("You exited the game")
+		fmt.Println("score: ", *score, ", number of questions:", *num_of_ques_answered)
+		return "exit"
+	} else {
+		fmt.Println("Incorrect")
+		return "continue"
+	}
+}
+
 func main() {
 	fmt.Println("Welcome to my quiz game")
 
@@ -36,15 +65,10 @@ If you want to quit the quiz enter "q" also lowercase`
 		return
 	}
 
-	if answer1 == "c" {
-		fmt.Println("Correct!")
-		score++
-	} else if answer1 == "q" {
-		fmt.Println("You exited the game")
-		fmt.Println("score: ", score, ", number of questions:", num_of_ques_answered)
+	c := answer(answer1, "c", &score, &num_of_ques_answered)
+
+	if c == "exit" {
 		return
-	} else {
-		fmt.Println("Incorrect")
 	}
 
 	num_of_ques_answered++ // this is to increase the variable to show that a question
@@ -68,7 +92,7 @@ If you want to quit the quiz enter "q" also lowercase`
 		score++
 	} else if answer2 == "q" {
 		fmt.Println("You exited the game")
-		fmt.Println("score: ", score, ", number of questions:", number_of_questions)
+		fmt.Println("score: ", score, ", number of questions:", num_of_ques_answered)
 		return
 	} else {
 		fmt.Println("Incorrect")
@@ -98,6 +122,7 @@ If you want to quit the quiz enter "q" also lowercase`
 	} else {
 		fmt.Println("Incorrect")
 	}
+
 	num_of_ques_answered++ // this is to increase the variable to show that a question
 	// was answered
 
