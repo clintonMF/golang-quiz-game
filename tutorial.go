@@ -3,6 +3,8 @@ package main
 import "fmt"
 
 func answer(user_answer, answer string, score, num_of_ques_answered *int) string {
+	// this function figures if the answer is correct or wrong and gives appropriate
+	// response for each case or input the user makes
 	options := [4]string{"a", "b", "c", "d"}
 	found := false
 	for _, v := range options {
@@ -65,9 +67,9 @@ If you want to quit the quiz enter "q" also lowercase`
 		return
 	}
 
-	c := answer(answer1, "c", &score, &num_of_ques_answered)
+	question1 := answer(answer1, "c", &score, &num_of_ques_answered)
 
-	if c == "exit" {
+	if question1 == "exit" {
 		return
 	}
 
@@ -85,18 +87,13 @@ If you want to quit the quiz enter "q" also lowercase`
 		fmt.Println("An error occured, please enter the right input")
 		return
 	}
-	// handling error with inputing the answer
 
-	if answer2 == "a" {
-		fmt.Println("Correct!")
-		score++
-	} else if answer2 == "q" {
-		fmt.Println("You exited the game")
-		fmt.Println("score: ", score, ", number of questions:", num_of_ques_answered)
+	question2 := answer(answer2, "a", &score, &num_of_ques_answered)
+
+	if question2 == "exit" {
 		return
-	} else {
-		fmt.Println("Incorrect")
 	}
+
 	num_of_ques_answered++ // this is to increase the variable to show that a question
 	// was answered
 
@@ -112,15 +109,10 @@ If you want to quit the quiz enter "q" also lowercase`
 		return
 	}
 
-	if answer3 == "d" {
-		fmt.Println("Correct!")
-		score++
-	} else if answer3 == "q" {
-		fmt.Println("You exited the game")
-		fmt.Println("score: ", score, ", number of questions:", num_of_ques_answered)
+	question3 := answer(answer3, "d", &score, &num_of_ques_answered)
+
+	if question3 == "exit" {
 		return
-	} else {
-		fmt.Println("Incorrect")
 	}
 
 	num_of_ques_answered++ // this is to increase the variable to show that a question
@@ -136,15 +128,10 @@ If you want to quit the quiz enter "q" also lowercase`
 		return
 	}
 
-	if answer4 == "b" {
-		fmt.Println("Correct!")
-		score++
-	} else if answer4 == "q" {
-		fmt.Println("You exited the game")
-		fmt.Println("score: ", score, ", number of questions:", number_of_questions)
+	question4 := answer(answer4, "b", &score, &num_of_ques_answered)
+
+	if question4 == "exit" {
 		return
-	} else {
-		fmt.Println("Incorrect")
 	}
 
 	fmt.Println("score: ", score, "number of questions:", number_of_questions)
